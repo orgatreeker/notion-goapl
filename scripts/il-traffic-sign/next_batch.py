@@ -6,7 +6,7 @@ V={x['Email'].strip().lower():x['validation result'] for x in csv.DictReader(ope
 wb=openpyxl.load_workbook(f)
 sent={(r[3] or '').lower() for r in wb['Sent log'].iter_rows(min_row=2,values_only=True)}
 T=wb['Towns buying']; h=[c.value for c in T[1]]; x={k:i for i,k in enumerate(h)}
-bad=re.compile(r'support|911|kencom|mfd|wastew|communications|police|fire|dispatch|pd\.|pd@|sheriff|ema|esda|hospital|general|school|sped|special|tech|it director|infotech|\bit\b|radio|fcc|bi-county|etsb|rescue|ambulance|ems|marshallcounty|stephensoncounty',re.I)
+bad=re.compile(r'support|911|kencom|mfd|wastew|communications|police|fire|dispatch|pd\.|pd@|sheriff|ema|esda|hospital|general|school|sped|special|tech|it director|infotech|\bit\b|radio|fcc|bi-county|etsb|rescue|ambulance|ems|marshallcounty|stephensoncounty|midlothian',re.I)
 good=re.compile(r'public works|street|highway|road|engineer|superintendent|administrator|manager|mayor|clerk|trustee|president|village|city',re.I)
 c=[]
 for r in T.iter_rows(min_row=2,values_only=True):
